@@ -1,0 +1,18 @@
+server:
+  port: 7901
+eureka:
+  server:
+    enable-self-preservation: false # 是否开启自我保护
+
+  instance:
+    appname: ${spring.application.name}
+    hostname: eureka-7901
+    prefer-ip-address: true # 偏向IP
+    ip-address: 10.108.153.190 # 指定IP地址
+    lease-renewal-interval-in-seconds: 30 # 续租时间间隔
+    lease-expiration-duration-in-seconds: 90 # 过期时间
+  client:
+    service-url:
+      defaulzone: http://eureka-7900:7900/eureka,http://eureka-7901:7901/eureka
+    fetch-registry: true # 拉取服务列表
+    register-with-eureka: true # 是否注册到注册中心
