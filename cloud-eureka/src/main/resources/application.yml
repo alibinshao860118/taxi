@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: eureka
+  profiles:
+    active: 7900
+eureka:
+  instance:
+    hostname: eureka-7900
+    prefer-ip-address: true # 偏向IP
+    ip-address: 10.108.153.190 # 指定IP地址
+  client:
+    #不向注册中心注册自己
+    register-with-eureka: true
+    #不需要检索服务
+    fetch-registry: true # 拉取服务列表
+    service-url:
+      defaulzone: http://eureka-7900:7900/eureka,http://eureka-7901:7901/eureka
+      #,http://localhost:7900/eureka,http://localhost:7900/eureka
+#自我保护机制，默认开
+  server:
+    eviction-interval-timer-in-ms: 1000
+    renewal-percent-threshold: 0.8
+    enable-self-preservation: false
+    use-read-only-response-cache: false
+    response-cache-update-interval-ms: 1000
+#搭多节点集群
+
+
+
+#spring:
+#  profiles: 7901
+#server:
+#  port: 7901
+#eureka:
+#  instance:
+#    hostname: eureka-7901
+---
+#spring:
+#  profiles: 7902
+#server:
+#  port: 7902
+#eureka:
+#  instance:
+#    hostname: eureka-7902
