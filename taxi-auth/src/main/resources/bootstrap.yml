@@ -1,0 +1,42 @@
+# Tomcat
+server:
+  port: 9202
+# Spring
+spring:
+  main:
+    allow-circular-references: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  application:
+    # 应用名称
+    name: taxi-auth
+  profiles:
+    # 环境配置
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 192.168.189.1:8848
+        namespace: 86714e27-5972-4071-9ac2-b1b4d0f96ee8
+      config:
+        # 配置中心地址
+        server-addr: 192.168.189.1:8848
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+
+#sql打印
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+aliyun:
+  oss:
+    endpoint: oss-cn-guangzhou.aliyuncs.com
+    bucket_endpoint: aliyun-oss6337.oss-cn-guangzhou.aliyuncs.com
+    AccessKey_ID: LTAI5tG4qzaHKiCuyDVTmDDK
+    
